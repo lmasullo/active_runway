@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Active Runway - Preferences</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
+    <link href="css/main.css" rel="stylesheet" />
+    <!-- <script src="cordova.js"></script> -->
+    <!-- <script src="js/runway.js"></script> -->
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+
+    <!-- javascript code for this page -->
+    <script>
+
+    /*Before the preference page loads it checks local storage for the how many runways, then sets the flip switch*/
+    $(document).on( 'pagebeforeshow' , '#pref' ,function(event){
+        strRway = localStorage.Runways;
+        //alert(strRway);
+        $('#flpRun').val(strRway).trigger('create').slider("refresh");
+    });
+
+      //Waits until page loads before firing these functions
+      $(document).on("pagecreate", "#pref", function () {
+        /*Function to save the state of the Preference Flip Switch*/
+        function fnSave(){
+            var strFlip = document.getElementById('flpRun').value
+            //alert(strFlip);
+            //store some data
+            localStorage.Runways=strFlip;
+            //fnReset();
+            //document.getElementById('divUpdate').style.visibility = 'visible'; //make Update Div visible
+            document.getElementById("divUpdate").style.display= "block";
+            //alert("Update!")
+        }
+
+        $("#flpRun").on("change", function () {
+            //alert("Change!");
+            fnSave();
+        });
+
+        // /*function to clear and reset the sliders when change preferences*/
+        // function fnReset() {
+        //     //runway 1 clearing
+        //     document.getElementById('imgCheck').style.visibility = 'hidden'; //make check invisible
+        //     document.getElementById('imgCheck2').style.visibility = 'hidden'; //make other check invisible
+        //     document.getElementById('txtRway').innerHTML = ''; //make runway invisible
+        //     document.getElementById('txtRway2').innerHTML = ''; //make runway invisible
+        //     document.getElementById('txtOffset').innerHTML = ''; //make offset invisible
+        //     document.getElementById('txtLand').innerHTML = ''; //make Landing Runway invisible
+        //     //runway 2 clearing
+        //     document.getElementById('imgCheck_2').style.visibility = 'hidden'; //make check invisible
+        //     document.getElementById('imgCheck2_2').style.visibility = 'hidden'; //make other check invisible
+        //     document.getElementById('txtRway_2').innerHTML = ''; //make runway invisible
+        //     document.getElementById('txtRway2_2').innerHTML = ''; //make runway invisible
+        //     document.getElementById('txtOffset_2').innerHTML = ''; //make offset invisible
+        //     document.getElementById('txtLand_2').innerHTML = ''; //make Landing Runway invisible
+        //     document.getElementById('txtLand_Final').innerHTML = ''; //make Final Runway invisible
+        //
+        //     document.getElementById('txtLand_Final').innerHTML = ''; //make Final Runway invisible
+        //     $("#txtWind").val(1).slider("refresh");
+        //     $("#txtA").val(18).slider("refresh");
+        //     $("#txtA_2").val(18).slider("refresh");
+        //     $("#btnReset").removeClass("ui-btn-active");//prevents the reset button from staying active
+        // }
+
+      });//End Page Create
+    </script>
+
+</head>
+
+<body>
+    <div data-role="page" id="pref">
+        <div data-role="header" data-add-back-btn="true">
+            <h1>Preferences</h1>
+        </div>
+        <!-- /header -->
+        <div role="main" class="ui-content">
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <label for="flpRun">Select Number of Runways to Display:</label>
+                </div>
+                <div class="ui-block-b">
+                    <select name="flpRun" id="flpRun" data-role="slider" >
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                </select>
+                  <div id="divUpdate" style="display:none">
+                    <strong><font color="blue">Preferences Updated</font></strong>
+                    <img src="images/check.png" width="20" height="12" id="imgCheck" alt=""/>
+                  </div>
+                </div>
+            </div>
+            <!-- /grid-a -->
+        </div>
+        <!-- /end content -->
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="index.html" data-icon="home" data-ajax="false">Home</a></li>
+                    <li><a href="preferences.html" data-icon="gear" data-ajax="false">Prefs.</a></li>
+                    <li><a href="about.html" data-icon="info" data-ajax="false">About</a></li>
+                    <li><a href="help.html" data-icon="search" data-ajax="false">Help</a></li>
+                </ul>
+            </div>
+            <!-- /navbar -->
+        </div>
+        <!-- /footer -->
+    </div>
+    <!-- /end page -->
+</body>
+
+</html>
