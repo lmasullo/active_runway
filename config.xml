@@ -7,11 +7,11 @@
     <access origin="*" />
     <!-- <engine name="ios" spec="~4.3.1" /> -->
 
-    <platform name="ios">
+    <!-- <platform name="ios">
 
       <splash src="splash/ios/Default-Portrait-736h@3x.png" width="1242" height="2208"/>
       <splash src="splash/ios/Default-Landscape-736h@3x.png" width="2208" height="1242"/>
 
-    </platform>
+    </platform> -->
 
 </widget>
