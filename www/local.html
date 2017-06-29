@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Active Runway - Local</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css" />
+    <link href="css/main.css" rel="stylesheet" />
+	  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- <script src="cordova.js"></script> -->
+    <!-- <script src="js/runway.js"></script> -->
+    <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+
+    <!-- javascript code for this page -->
+    <script>
+      //Waits until page loads before firing these functions
+      $(document).on("pagecreate", "#local", function () {
+
+        function refreshPage() {
+          jQuery.mobile.pageContainer.pagecontainer('change', window.location.href, {
+            allowSamePageTransition: true,
+            transition: 'none',
+            reloadPage: true
+            // 'reload' parameter not working yet: //github.com/jquery/jquery-mobile/issues/7406
+          });
+        }
+
+        /*Function to save the state of the Disclaimer, only display 1st time app is opened*/
+        $("#btnTrue").on("tap", function () {
+
+
+            localStorage.testLocal="True";
+            alert("Local True!");
+            //$.mobile.changePage( "local.html", { transition: "slideup"} );
+            //refreshPage();
+            //store some data
+            //localStorage.Disclaimer="True";//set the disclaimer to already viewed
+            //$.mobile.changePage( "index.html", { transition: "slideup"} );//go to index.html page
+
+            //$( ":mobile-pagecontainer" ).pagecontainer( "change", "index.html", { transition: "slideup" } );
+        });
+
+        $("#btnFalse").on("tap", function () {
+            //alert("Local Test!");
+
+            localStorage.testLocal="False";
+            alert("Local False!");
+            //refreshPage();
+            //$.mobile.changePage( "local.html", { transition: "slideup"} );
+
+            //store some data
+            //localStorage.Disclaimer="True";//set the disclaimer to already viewed
+            //$.mobile.changePage( "index.html", { transition: "slideup"} );//go to index.html page
+
+            //$( ":mobile-pagecontainer" ).pagecontainer( "change", "index.html", { transition: "slideup" } );
+        });
+
+      });//End Page Create
+
+    </script>
+
+</head>
+<body>
+    <div data-role="page" id="local">
+        <div data-role="header">
+            <h1>Local Test</h1>
+        </div>
+        <!-- /header -->
+        <div role="main" class="ui-content">
+            <div>
+                <img src="images/80x80.png" class="fl">
+            </div>
+            <div id="divAbout">
+                <h2>Local Storage Test</h2>
+            </div>
+            <br><br>
+            <div>
+
+
+                <!-- <script>
+
+                //display the disclaimer I Agree button only the first time the application is opened
+                strDisclaimer = localStorage.Disclaimer;
+                if(strDisclaimer != "True"){
+                  <input type="button" id="btnAgree" data-inline="true" value="I Agree">
+                }
+
+                </script> -->
+
+                <input type="button" id="btnTrue" data-inline="true" value="Set Local Storage True">
+
+                <input type="button" id="btnFalse" data-inline="true" value="Set False">
+
+
+            </div>
+            <div id="divLocal"></div>
+            <script>
+              var strLocal = localStorage.testLocal;
+              if(strLocal == "True"){
+                //alert("True");
+                document.getElementById('divLocal').innerHTML = 'Local is Set to True';
+              }else{
+                //alert("False");
+                document.getElementById('divLocal').innerHTML = 'Local is Set to False';
+              }
+            </script>
+
+
+
+        </div>
+        <!-- /end content -->
+    </div>
+    <!-- /end page -->
+</body>
+</html>

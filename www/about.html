@@ -8,16 +8,17 @@
     <link href="css/main.css" rel="stylesheet" />
 	  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <!-- <script src="cordova.js"></script> -->
-    <script src="js/runway.js"></script>
+    <!-- <script src="js/runway.js"></script> -->
     <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 
 </head>
 <body>
     <div data-role="page" id="about">
         <div data-role="header" data-add-back-btn="true">
+            <a href="#" data-rel="back" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-back ui-nodisc-icon ui-alt-icon ui-btn-left">Back</a>
             <h1>About</h1>
-        </div>
-        <!-- /header -->
+        </div><!-- /header -->
+
         <div role="main" class="ui-content">
             <div>
                 <img src="images/80x80.png" class="fl">
@@ -41,10 +42,20 @@
                 <p>
                      Enjoy, and I hope you find this application helpful. I welcome any comments or suggestions. Please feel free to email me at <a href="mailto:support@activerunway.net">support@activerunway.net</a>
                 </p>
-                <!--<input type="button" value="Website" onclick="fnWeb();">-->
+
+                <br>
+                <!-- Link to disclaimer page -->
+                <!-- <class="ui-btn ui-icon-info ui-btn-icon-left" data-ajax="false">View Disclaimer</button> -->
+                <!-- <button data-inline="True" class="ui-btn ui-icon-info ui-btn-icon-left">View Disclaimer</button>
+
+                <input type="button" data-inline="true" data-icon="info" value="View Disclaimer"> -->
+
+                <a href="disclaimer.html" class="ui-btn ui-icon-info ui-btn-icon-left">View Disclaimer</a>
+
+
             </div>
-        </div>
-        <!-- /end content -->
+        </div><!-- /end content -->
+
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar" data-iconpos="top">
                 <ul>
@@ -53,11 +64,9 @@
                     <li><a href="about.html" data-icon="info" data-ajax="false">About</a></li>
                     <li><a href="help.html" data-icon="search" data-ajax="false">Help</a></li>
                 </ul>
-            </div>
-            <!-- /navbar -->
-        </div>
-        <!-- /footer -->
-    </div>
-    <!-- /end page -->
+            </div><!-- /navbar -->
+        </div><!-- /footer -->
+    </div><!-- /end page -->
+
 </body>
 </html>

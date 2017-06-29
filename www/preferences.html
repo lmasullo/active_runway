@@ -41,31 +41,6 @@
             fnSave();
         });
 
-        // /*function to clear and reset the sliders when change preferences*/
-        // function fnReset() {
-        //     //runway 1 clearing
-        //     document.getElementById('imgCheck').style.visibility = 'hidden'; //make check invisible
-        //     document.getElementById('imgCheck2').style.visibility = 'hidden'; //make other check invisible
-        //     document.getElementById('txtRway').innerHTML = ''; //make runway invisible
-        //     document.getElementById('txtRway2').innerHTML = ''; //make runway invisible
-        //     document.getElementById('txtOffset').innerHTML = ''; //make offset invisible
-        //     document.getElementById('txtLand').innerHTML = ''; //make Landing Runway invisible
-        //     //runway 2 clearing
-        //     document.getElementById('imgCheck_2').style.visibility = 'hidden'; //make check invisible
-        //     document.getElementById('imgCheck2_2').style.visibility = 'hidden'; //make other check invisible
-        //     document.getElementById('txtRway_2').innerHTML = ''; //make runway invisible
-        //     document.getElementById('txtRway2_2').innerHTML = ''; //make runway invisible
-        //     document.getElementById('txtOffset_2').innerHTML = ''; //make offset invisible
-        //     document.getElementById('txtLand_2').innerHTML = ''; //make Landing Runway invisible
-        //     document.getElementById('txtLand_Final').innerHTML = ''; //make Final Runway invisible
-        //
-        //     document.getElementById('txtLand_Final').innerHTML = ''; //make Final Runway invisible
-        //     $("#txtWind").val(1).slider("refresh");
-        //     $("#txtA").val(18).slider("refresh");
-        //     $("#txtA_2").val(18).slider("refresh");
-        //     $("#btnReset").removeClass("ui-btn-active");//prevents the reset button from staying active
-        // }
-
       });//End Page Create
     </script>
 
@@ -74,9 +49,11 @@
 <body>
     <div data-role="page" id="pref">
         <div data-role="header" data-add-back-btn="true">
+            <!-- Back Button -->
+            <a href="#" data-rel="back" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-back ui-nodisc-icon ui-alt-icon ui-btn-left">Back</a>
             <h1>Preferences</h1>
-        </div>
-        <!-- /header -->
+        </div><!-- /header -->
+
         <div role="main" class="ui-content">
             <div class="ui-grid-a">
                 <div class="ui-block-a">
@@ -92,10 +69,9 @@
                     <img src="images/check.png" width="20" height="12" id="imgCheck" alt=""/>
                   </div>
                 </div>
-            </div>
-            <!-- /grid-a -->
-        </div>
-        <!-- /end content -->
+            </div><!-- /grid-a -->
+        </div><!-- /end content -->
+
         <div data-role="footer" data-position="fixed">
             <div data-role="navbar" data-iconpos="top">
                 <ul>
@@ -104,12 +80,10 @@
                     <li><a href="about.html" data-icon="info" data-ajax="false">About</a></li>
                     <li><a href="help.html" data-icon="search" data-ajax="false">Help</a></li>
                 </ul>
-            </div>
-            <!-- /navbar -->
-        </div>
-        <!-- /footer -->
-    </div>
-    <!-- /end page -->
+            </div><!-- /navbar -->
+        </div><!-- /footer -->
+    </div><!-- /end page -->
+
 </body>
 
 </html>

@@ -28,10 +28,14 @@
         $(document).on( 'pagebeforeshow' , '#pageone' ,function(event){
 
             //display the disclaimer the first time the application is opened
-            // strDisclaimer = localStorage.Disclaimer;
-            // if(strDisclaimer != "True"){
-            //     $.mobile.changePage( "disclaimer.html", { transition: "slidedown"} );
-            // }
+            strDisclaimer = localStorage.Disclaimer;
+            if(strDisclaimer != "True"){
+                //User has never viewed the disclaimer, so display
+                //deprecated
+                //$.mobile.changePage( "disclaimer.html", { transition: "slidedown"} );
+
+                // $( ":mobile-pagecontainer" ).pagecontainer( "change", "disclaimer.html", { transition: "slidedown" } );
+            }
 
             strRway = localStorage.Runways;
             //var intRway = parseInt(strRway); //turn into a number
@@ -53,6 +57,14 @@
 
           //Waits until page loads before firing these functions
           $(document).on("pagecreate", "#pageone", function () {
+
+            /*Function to delete the disclaimer for testing */
+            function fnLocal(){
+                //store some data
+                localStorage.Disclaimer="False";//set the disclaimer to Not Viewed
+                alert("Local Storage Set to Not Viewed");
+                //$.mobile.changePage( "about.html", { transition: "slideup"} );//go to index.html page
+            }
 
               /*Substracts 1 from the Wind Direction*/
               $("#btnMinusWind").on("tap", function () {
@@ -130,7 +142,7 @@
               });
 
               /*Fires the Reset the page function*/
-              $("#btnReset").on("click", function () {
+              $("#btnReset").on("tap", function () {
                   fnReset();
               });
 
@@ -152,6 +164,7 @@
               /*Fires the calculation functions*/
               $("#btnLocal").on("tap", function () {
                   fnLocal();
+                  alert("Test Local");
               });
 
               /*function to clear and reset the sliders when change preferences*/
@@ -428,7 +441,7 @@
 
           <!-- Header -->
           <div data-role="header">
-              <h1>Active Runway - Web</h1>
+              <h1>Active Runway</h1>
           </div><!-- /header -->
 
           <!-- Page Content -->
@@ -453,7 +466,6 @@
               <div id="divCenter" class="padding">
                   <input type="button" name="btnMinusRway" id="btnMinusRway" data-inline="true" value="-">
                   <input type="button" name="btnPlusRway" id="btnPlusRway" data-inline="true" value="+">
-                  <!-- <input type="button" id="btnTest" data-inline="true" value="Test"> -->
               </div>
 
               <!--Calculated degrees Runway 1-->
@@ -488,7 +500,6 @@
                       </div>
                   </div>
               </div>
-
 
               <!--Calculated degrees Runway 2-->
               <div class="ui-field-contain" id="divTwo_b" style="display:none">
@@ -526,7 +537,7 @@
               <input type="button" name="btnCalc" id="btnCalc" value="Calculate">
 
               <!--This is used to delete the Disclaimer setting so it can be viewed again-->
-              <!-- <input type="button" id="btnLocal" value="Testing! - Erase Local Storage Value"> -->
+              <input type="button" id="btnLocal" value="Testing! - Erase Local Storage Value">
           </div><!-- /end content -->
 
           <div data-role="footer" data-position="fixed">
@@ -539,7 +550,6 @@
                         <!-- <input type="button" name="btnReset" id="btnReset" value="Reset"> -->
                         <a href="#" id="btnReset" data-icon="refresh">Reset</a>
                       </li>
-
                   </ul>
               </div><!-- /navbar -->
           </div><!-- /footer -->
