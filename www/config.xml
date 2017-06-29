@@ -5,5 +5,5 @@
     <author email="support@activerunway.net" href="http://activerunway.net">Lawrence N. Masullo, MD</author>
     <content src="index.html" />
     <access origin="*" />
-    <engine name="ios" spec="~4.3.1" />
+    <!-- <engine name="ios" spec="~4.3.1" /> -->
 </widget>

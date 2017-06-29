@@ -14,8 +14,7 @@
         <!-- jquery -->
     	  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>\
 
-        <!-- Cordova js -->
-        <script src="cordova.js"></script>
+
         <!-- Runway js file -->
         <!-- <script src="js/runway.js"></script> -->
 
@@ -29,10 +28,10 @@
         $(document).on( 'pagebeforeshow' , '#pageone' ,function(event){
 
             //display the disclaimer the first time the application is opened
-            strDisclaimer = localStorage.Disclaimer;
-            if(strDisclaimer != "True"){
-                $.mobile.changePage( "disclaimer.html", { transition: "slidedown"} );
-            }
+            // strDisclaimer = localStorage.Disclaimer;
+            // if(strDisclaimer != "True"){
+            //     $.mobile.changePage( "disclaimer.html", { transition: "slidedown"} );
+            // }
 
             strRway = localStorage.Runways;
             //var intRway = parseInt(strRway); //turn into a number
@@ -178,7 +177,7 @@
                   $("#txtA_2").val(18).slider("refresh");
                   $("#btnReset").removeClass("ui-btn-active");//prevents the reset button from staying active
               }
-            
+
               /*function to clear the info when change wind direction*/
               function fnClear() {
                   //runway 1 clearing
@@ -423,6 +422,10 @@
     <body>
       <!-- Page Div -->
       <div data-role="page" id="pageone">
+
+        <!-- Cordova js -->
+        <script src="cordova.js"></script>
+
           <!-- Header -->
           <div data-role="header">
               <h1>Active Runway - Web</h1>
