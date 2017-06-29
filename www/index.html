@@ -130,6 +130,11 @@
                   fnRway2(document.getElementById('txtWind').value,document.getElementById('txtA_2').value,document.getElementById('txtB_2').value);
               });
 
+              /*Fires the Reset the page function*/
+              $("#btnReset").on("click", function () {
+                  fnReset();
+              });
+
               /*Fires the Clear function when wind slider is changed*/
               $("#txtWind").on("change", function () {
                   fnClear();
@@ -150,36 +155,30 @@
                   fnLocal();
               });
 
-              /*Fires Reset*/
-              $("#btnReset").on("tap", function () {
-                alert("Reset");
-                /*function to clear and reset the sliders when change preferences*/
-                // function fnReset() {
-                //     //runway 1 clearing
-                //     document.getElementById('imgCheck').style.visibility = 'hidden'; //make check invisible
-                //     document.getElementById('imgCheck2').style.visibility = 'hidden'; //make other check invisible
-                //     document.getElementById('txtRway').innerHTML = ''; //make runway invisible
-                //     document.getElementById('txtRway2').innerHTML = ''; //make runway invisible
-                //     document.getElementById('txtOffset').innerHTML = ''; //make offset invisible
-                //     document.getElementById('txtLand').innerHTML = ''; //make Landing Runway invisible
-                //     //runway 2 clearing
-                //     document.getElementById('imgCheck_2').style.visibility = 'hidden'; //make check invisible
-                //     document.getElementById('imgCheck2_2').style.visibility = 'hidden'; //make other check invisible
-                //     document.getElementById('txtRway_2').innerHTML = ''; //make runway invisible
-                //     document.getElementById('txtRway2_2').innerHTML = ''; //make runway invisible
-                //     document.getElementById('txtOffset_2').innerHTML = ''; //make offset invisible
-                //     document.getElementById('txtLand_2').innerHTML = ''; //make Landing Runway invisible
-                //     document.getElementById('txtLand_Final').innerHTML = ''; //make Final Runway invisible
-                //
-                //     document.getElementById('txtLand_Final').innerHTML = ''; //make Final Runway invisible
-                //     $("#txtWind").val(1).slider("refresh");
-                //     $("#txtA").val(18).slider("refresh");
-                //     $("#txtA_2").val(18).slider("refresh");
-                //     $("#btnReset").removeClass("ui-btn-active");//prevents the reset button from staying active
-                // }
-              });
-
-
+              /*function to clear and reset the sliders when change preferences*/
+              function fnReset() {
+                  //runway 1 clearing
+                  document.getElementById('imgCheck').style.visibility = 'hidden'; //make check invisible
+                  document.getElementById('imgCheck2').style.visibility = 'hidden'; //make other check invisible
+                  document.getElementById('txtRway').innerHTML = ''; //make runway invisible
+                  document.getElementById('txtRway2').innerHTML = ''; //make runway invisible
+                  document.getElementById('txtOffset').innerHTML = ''; //make offset invisible
+                  document.getElementById('txtLand').innerHTML = ''; //make Landing Runway invisible
+                  //runway 2 clearing
+                  document.getElementById('imgCheck_2').style.visibility = 'hidden'; //make check invisible
+                  document.getElementById('imgCheck2_2').style.visibility = 'hidden'; //make other check invisible
+                  document.getElementById('txtRway_2').innerHTML = ''; //make runway invisible
+                  document.getElementById('txtRway2_2').innerHTML = ''; //make runway invisible
+                  document.getElementById('txtOffset_2').innerHTML = ''; //make offset invisible
+                  document.getElementById('txtLand_2').innerHTML = ''; //make Landing Runway invisible
+                  document.getElementById('txtLand_Final').innerHTML = ''; //make Final Runway invisible
+                  document.getElementById('txtLand_Final').innerHTML = ''; //make Final Runway invisible
+                  $("#txtWind").val(1).slider("refresh");
+                  $("#txtA").val(18).slider("refresh");
+                  $("#txtA_2").val(18).slider("refresh");
+                  $("#btnReset").removeClass("ui-btn-active");//prevents the reset button from staying active
+              }
+            
               /*function to clear the info when change wind direction*/
               function fnClear() {
                   //runway 1 clearing
@@ -535,7 +534,7 @@
                       <li><a href="help.html" data-icon="search" data-ajax="false">Help</a></li>
                       <li>
                         <!-- <input type="button" name="btnReset" id="btnReset" value="Reset"> -->
-                        <a href="#" id="btnReset" data-icon="refresh" onclick="fnReset();">Reset</a>
+                        <a href="#" id="btnReset" data-icon="refresh">Reset</a>
                       </li>
 
                   </ul>
