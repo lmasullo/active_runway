@@ -30,7 +30,10 @@
         $("#btnAgree").on("tap", function () {
             //alert("Disclaimer!");
             //store some data
-            localStorage.Disclaimer="True";//set the disclaimer to already viewed
+            //localStorage.Disclaimer="True";//set the disclaimer to already viewed
+            var storage = window.localStorage;
+            storage.setItem('Disclaimer', 'True');
+
             //deprecated event
             //$.mobile.changePage( "index.html", { transition: "slideup"} );//go to index.html page
 
@@ -74,15 +77,25 @@
                 <a href="#" data-role="button" id="btnAgree">I Agree</a>
                 <!-- Div to put message that disclaimer has already been agreed to -->
                 <div align="center" id="divDisclaimer"></div>
+                <div align="center" id="divBack" style="display:none">
+                  <a href="about.html" class="ui-btn ui-btn-inline ui-corner-all">Go Back</a>
+                </div>
+
+
 
                 <script>
                   //display the disclaimer I Agree button only the first time the application is opened
-                  strDisclaimer = localStorage.Disclaimer;
+                  var storage = window.localStorage;
+                  var strDisclaimer = storage.getItem('Disclaimer');
+                  //strDisclaimer = localStorage.Disclaimer;
                   //alert(strDisclaimer);
                   if(strDisclaimer == "True"){
                     $('#btnAgree').addClass('ui-disabled');
+                    //Make already agreed message visible
                     document.getElementById('divDisclaimer').innerHTML = 'You have already agreed, thanks!';
                     document.getElementById('divDisclaimer').style.color = 'blue';
+                    //Make go back button visible
+                    document.getElementById('divBack').style.display = 'block';
                   }
                 </script><!--/end check localStorage.Disclaimer-->
             </div>
