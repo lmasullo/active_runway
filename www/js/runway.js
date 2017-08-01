@@ -418,7 +418,7 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
     var storage = window.localStorage;
     var strDisclaimer = storage.getItem('Disclaimer');
     //strDisclaimer = localStorage.Disclaimer;
-    //alert(strDisclaimer);
+    alert(strDisclaimer);
     if(strDisclaimer == "True"){
       $('#btnAgree').addClass('ui-disabled');
       //Make already agreed message visible
@@ -438,4 +438,4 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
         //go back to index.html
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "index.html", { transition: "slideup" } );
     });
-  });//End Page Create pageDisclaimer
+  });//End Page Show pageDisclaimer
