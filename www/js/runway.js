@@ -33,10 +33,14 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
         document.getElementById("txtLand").style.display="block";
         document.getElementById("txtLand_2").style.display="block";
     }
-});
+});// end pagebeforeshow
 
   //Waits until page loads before firing these functions
   $(document).on("pagecreate", "#pageIndex", function () {
+
+    //Get Runway localStorage
+    var storage = window.localStorage;
+    var strRway = storage.getItem('Runways');
 
     /*Function to delete the disclaimer for testing */
     function fnLocal(){
@@ -147,7 +151,6 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
       /*Fires the calculation functions*/
       $("#btnLocal").on("tap", function () {
           fnLocal();
-          //alert("Test Local");
       });
 
       /*function to clear and reset the sliders when change preferences*/
@@ -169,10 +172,22 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
           document.getElementById('txtLand_Final').innerHTML = ''; //make Final Runway invisible
           document.getElementById('txtLand_Final').innerHTML = ''; //make Final Runway invisible
           $("#txtWind").val(1).slider("refresh");
+
+          //Resets the values of the runway sliders
           $("#txtA").val(18).slider("refresh");
           $("#txtA_2").val(18).slider("refresh");
-          $("#btnReset").removeClass("ui-btn-active");//prevents the reset button from staying active
-      }
+          $("#txtB").val(36);
+          $("#txtB_2").val(36);
+
+          //$("#btnReset").removeClass("ui-btn-active");//prevents the reset button from staying active
+
+          //$('#pageIndex').find('.ui-btn-active').removeClass('ui-btn-active ui-focus');
+          //alert("Test");
+          //$('.btnReset').parent().removeClass('ui-btn-active');
+          //$('[data-role=navbar] a').removeClass("ui-btn-active");
+          //$(".ui-btn-active").removeClass('ui-btn-active');
+          //$('.active').removeClass('active');//remove class active
+      }//function fnReset
 
       /*function to clear the info when change wind direction*/
       function fnClear() {
@@ -192,7 +207,7 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
           document.getElementById('txtLand_2').innerHTML = ''; //make Landing Runway invisible
           document.getElementById('txtLand_Final').innerHTML = ''; //make Final Runway invisible
           document.getElementById('txtLand_Final').innerHTML = ''; //make Final Runway invisible
-      }
+      }//end function fnClear
 
       /*function to get the reciprocal of runway 1 and display it in the 2nd drop down*/
       function fn180() {
@@ -224,7 +239,7 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
 
           document.getElementById('txtLand_Final').innerHTML = ''; //make Final Runway invisible
           $("#txtB_2").trigger("refresh");
-      }
+      }// end function fn180
 
       /*function to get the reciprocal runway and display it in the 2nd drop down*/
       function fn180_2() {
@@ -256,7 +271,7 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
 
           document.getElementById('txtLand_Final').innerHTML = ''; //make Final Runway invisible
           $("#txtB_2").trigger("refresh");
-      }
+      }//end function fn180_2
 
       /*Calculates the Best Runway 1*/
       function fnRway(a, b, c) //wind is a, 1st runway is b, 2nd runway is c
@@ -314,10 +329,10 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
           }
 
           //Only run if 2 runways are displayed
-          if (strRway == 2){
+          if (strRway == "2"){
               fnBest();//run the function that compares all the offsets and picks the best runway of all 4
           }
-      }
+      }// end function fnRway
 
       /*Calculates the Best Runway 2*/
       function fnRway2(a, b, c) //wind is a, 1st runway is b, 2nd runway is c
@@ -371,7 +386,7 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
           }
 
           //Only run if 2 runways are displayed
-          if (strRway == 2){
+          if (strRway == "2"){
               fnBest();//run the function that compares all the offsets and picks the best runway of all 4
           }
 
@@ -456,6 +471,7 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
       //strRway = localStorage.Runways;
       //alert(strRway);
       $('#flpRun').val(strRway).trigger('create').slider("refresh");
+      //alert(strRway);
   });
 
   //Waits until page loads before firing these functions
