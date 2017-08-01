@@ -1,7 +1,7 @@
 /* Runway.js - All the scripts for Active Runway ver.1.0 */
 
 /*Before the index page loads it checks local storage for the how many runways, then displays the appropriate divs*/
-$(document).on( 'pagebeforeshow' , '#pageone' ,function(event){
+$(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
 
     //display the disclaimer the first time the application is opened
     //strDisclaimer = localStorage.Disclaimer;
@@ -10,9 +10,9 @@ $(document).on( 'pagebeforeshow' , '#pageone' ,function(event){
     if(strDisclaimer != "True"){
         //User has never viewed the disclaimer, so display
         //deprecated
-        $.mobile.changePage( "disclaimer.html", { transition: "slidedown"} );
+        //$.mobile.changePage( "disclaimer.html", { transition: "slidedown"} );
 
-        // $( ":mobile-pagecontainer" ).pagecontainer( "change", "disclaimer.html", { transition: "slidedown" } );
+        $( ":mobile-pagecontainer" ).pagecontainer( "change", "disclaimer.html", { transition: "slidedown" } );
     }
 
     var storage = window.localStorage;
@@ -36,7 +36,7 @@ $(document).on( 'pagebeforeshow' , '#pageone' ,function(event){
 });
 
   //Waits until page loads before firing these functions
-  $(document).on("pagecreate", "#pageone", function () {
+  $(document).on("pagecreate", "#pageIndex", function () {
 
     /*Function to delete the disclaimer for testing */
     function fnLocal(){
@@ -407,4 +407,35 @@ $(document).on( 'pagebeforeshow' , '#pageone' ,function(event){
               document.getElementById('txtLand_Final').innerHTML = "Best: "+document.getElementById('txtB_2').value;
           }
       }
-  });//End Page Create
+  });//End Page Create pageIndex
+
+
+
+  //Waits until Disclaimer page loads before firing these functions
+  $(document).on("pageshow", "#pageDisclaimer", function () {
+
+    //display the disclaimer I Agree button only the first time the application is opened
+    var storage = window.localStorage;
+    var strDisclaimer = storage.getItem('Disclaimer');
+    //strDisclaimer = localStorage.Disclaimer;
+    //alert(strDisclaimer);
+    if(strDisclaimer == "True"){
+      $('#btnAgree').addClass('ui-disabled');
+      //Make already agreed message visible
+      document.getElementById('divDisclaimer').innerHTML = 'You have already agreed, thanks!';
+      document.getElementById('divDisclaimer').style.color = 'blue';
+      //Make go back button visible
+      document.getElementById('divBack').style.display = 'block';
+    }
+
+
+    $("#btnAgree").on("tap", function () {
+        //store some data
+        //localStorage.Disclaimer="True";//set the disclaimer to already viewed
+        var storage = window.localStorage;
+        //set the disclaimer to already viewed
+        storage.setItem('Disclaimer', 'True');
+        //go back to index.html
+        $( ":mobile-pagecontainer" ).pagecontainer( "change", "index.html", { transition: "slideup" } );
+    });
+  });//End Page Create pageDisclaimer
