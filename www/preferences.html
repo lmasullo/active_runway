@@ -2,65 +2,32 @@
 <html>
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Active Runway - Preferences</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" <!--Local Copy of JQuery Mobile CSS-->
-    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
-    <!-- Active Runway CSS file -->
-    <link rel="stylesheet" href="css/main.css"/>
+  <!--Local Copy of jquery mobile css-->
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
 
-    <!-- Order of links must be JQuery, My Custom js files, JQuery Mobile-->
-    <!-- Local copy JQuery js files -->
-    <script src="js/jquery-1.11.1.min.js"></script>
+  <!-- Runway css file -->
+  <link rel="stylesheet" href="css/main.css"/>
 
-    <!-- Runway js file -->
-    <!-- <script src="js/runway.js"></script> -->
+  <!-- Order of links must be JQuery, My Custom js files, JQuery Mobile ???-->
+  <!-- CDN links to jquery mobile js files -->
+  <!-- jquery -->
+  <script src="js/jquery-1.11.1.min.js"></script>
 
-    <!-- JQuery Mobile local -->
-    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+  <!-- Runway js file -->
+  <script src="js/runway.js"></script>
 
-    <!-- javascript code for this page -->
-    <script>
+  <!-- jquery mobile -->
+  <script src="js/jquery.mobile-1.4.5.min.js"></script>
 
-    /*Before the preference page loads it checks local storage for the how many runways, then sets the flip switch*/
-    $(document).on( 'pagebeforeshow' , '#pref' ,function(event){
-        var storage = window.localStorage;
-        var strRway = storage.getItem('Runways');
-        //strRway = localStorage.Runways;
-        //alert(strRway);
-        $('#flpRun').val(strRway).trigger('create').slider("refresh");
-    });
-
-      //Waits until page loads before firing these functions
-      $(document).on("pagecreate", "#pref", function () {
-        /*Function to save the state of the Preference Flip Switch*/
-        function fnSave(){
-            var strFlip = document.getElementById('flpRun').value
-            //alert(strFlip);
-            //store some data
-            var storage = window.localStorage;
-            storage.setItem('Runways', strFlip);
-            //localStorage.Runways=strFlip;
-            //fnReset();
-            //document.getElementById('divUpdate').style.visibility = 'visible'; //make Update Div visible
-            document.getElementById("divUpdate").style.display= "block";
-            //alert("Update!")
-        }
-
-        $("#flpRun").on("change", function () {
-            //alert("Change!");
-            fnSave();
-        });
-
-      });//End Page Create
-    </script>
+  <!-- javascript code for this page is in runway.js-->
 
 </head>
 
 <body>
-    <div data-role="page" id="pref">
+    <div data-role="page" id="pagePref">
         <div data-role="header" data-add-back-btn="true">
             <br>
             <!-- Back Button -->
