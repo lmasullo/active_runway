@@ -1,51 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <title>Active Runway - Disclaimer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
-    <!---Local Copy of JQuery Mobile CSS--->
-    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+  <!--Local Copy of jquery mobile css-->
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
 
-    <!-- Active Runway CSS file -->
-    <link rel="stylesheet" href="css/main.css"/>
+  <!-- Runway css file -->
+  <link rel="stylesheet" href="css/main.css"/>
 
-    <!-- Order of links must be JQuery, My Custom js files, JQuery Mobile-->
-    <!-- Local copy JQuery js files -->
-    <script src="js/jquery-1.11.1.min.js"></script>
+  <!-- Order of links must be JQuery, My Custom js files, JQuery Mobile ???-->
+  <!-- CDN links to jquery mobile js files -->
+  <!-- jquery -->
+  <script src="js/jquery-1.11.1.min.js"></script>
 
-    <!-- Runway js file -->
-    <!-- <script src="js/runway.js"></script> -->
+  <!-- Runway js file -->
+  <script src="js/runway.js"></script>
 
-    <!-- JQuery Mobile local -->
-    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+  <!-- jquery mobile -->
+  <script src="js/jquery.mobile-1.4.5.min.js"></script>
 
-    <!-- javascript code for this page -->
-    <script>
-      //Waits until page loads before firing these functions
-      $(document).on("pagecreate", "#disclaimer", function () {
-
-        /*Function to save the state of the Disclaimer, only display 1st time app is opened*/
-        $("#btnAgree").on("tap", function () {
-            //alert("Disclaimer!");
-            //store some data
-            //localStorage.Disclaimer="True";//set the disclaimer to already viewed
-            var storage = window.localStorage;
-            storage.setItem('Disclaimer', 'True');
-
-            //deprecated event
-            //$.mobile.changePage( "index.html", { transition: "slideup"} );//go to index.html page
-
-            $( ":mobile-pagecontainer" ).pagecontainer( "change", "index.html", { transition: "slideup" } );
-        });
-      });//End Page Create
-
-    </script>
+  <!-- javascript code for this page is in runway.js-->
 
 </head>
 <body>
-    <div data-role="page" id="disclaimer">
+    <div data-role="page" id="pageDisclaimer">
         <div data-role="header">
             <br>
             <!-- Back Button -->
@@ -74,30 +54,17 @@
                 </p>
 
                 <!-- Button to agree to disclaimer, will change localStorage.Disclaimer -->
-                <a href="#" data-role="button" id="btnAgree">I Agree</a>
+                <a href="" data-role="button" id="btnAgree">I Agree</a>
                 <!-- Div to put message that disclaimer has already been agreed to -->
                 <div align="center" id="divDisclaimer"></div>
                 <div align="center" id="divBack" style="display:none">
                   <a href="about.html" class="ui-btn ui-btn-inline ui-corner-all">Go Back</a>
                 </div>
 
+<a href="about.html" class="ui-btn ui-btn-inline ui-corner-all">Go Back</a>
 
 
-                <script>
-                  //display the disclaimer I Agree button only the first time the application is opened
-                  var storage = window.localStorage;
-                  var strDisclaimer = storage.getItem('Disclaimer');
-                  //strDisclaimer = localStorage.Disclaimer;
-                  //alert(strDisclaimer);
-                  if(strDisclaimer == "True"){
-                    $('#btnAgree').addClass('ui-disabled');
-                    //Make already agreed message visible
-                    document.getElementById('divDisclaimer').innerHTML = 'You have already agreed, thanks!';
-                    document.getElementById('divDisclaimer').style.color = 'blue';
-                    //Make go back button visible
-                    document.getElementById('divBack').style.display = 'block';
-                  }
-                </script><!--/end check localStorage.Disclaimer-->
+
             </div>
         </div><!-- /end content -->
     </div><!-- /end page -->
