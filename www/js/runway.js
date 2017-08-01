@@ -410,7 +410,6 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
   });//End Page Create pageIndex
 
 
-
   //Waits until Disclaimer page loads before firing these functions
   $(document).on("pageshow", "#pageDisclaimer", function () {
 
@@ -418,7 +417,7 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
     var storage = window.localStorage;
     var strDisclaimer = storage.getItem('Disclaimer');
     //strDisclaimer = localStorage.Disclaimer;
-    alert(strDisclaimer);
+    //alert(strDisclaimer);
     if(strDisclaimer == "True"){
       $('#btnAgree').addClass('ui-disabled');
       //Make already agreed message visible
@@ -427,7 +426,6 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
       //Make go back button visible
       document.getElementById('divBack').style.display = 'block';
     }
-
 
     $("#btnAgree").on("tap", function () {
         //store some data
@@ -439,3 +437,46 @@ $(document).on( 'pagebeforeshow' , '#pageIndex' ,function(event){
         $( ":mobile-pagecontainer" ).pagecontainer( "change", "index.html", { transition: "slideup" } );
     });
   });//End Page Show pageDisclaimer
+
+
+  //Waits until About page loads before firing these functions
+  $(document).on("pageshow", "#pageAbout", function () {
+    $("#btnDisclaimer").on("tap", function () {
+      //alert("Test");
+      $( ":mobile-pagecontainer" ).pagecontainer( "change", "disclaimer.html", { transition: "slideup" } );
+    });
+
+  });//End Page Show pageAbout
+
+
+  /*Before the preference page loads it checks local storage for the how many runways, then sets the flip switch*/
+  $(document).on( 'pagebeforeshow' , '#pagePref' ,function(event){
+      var storage = window.localStorage;
+      var strRway = storage.getItem('Runways');
+      //strRway = localStorage.Runways;
+      //alert(strRway);
+      $('#flpRun').val(strRway).trigger('create').slider("refresh");
+  });
+
+  //Waits until page loads before firing these functions
+  $(document).on("pageshow", "#pagePref", function () {
+    /*Function to save the state of the Preference Flip Switch*/
+    function fnSave(){
+        var strFlip = document.getElementById('flpRun').value
+        //alert(strFlip);
+        //store some data
+        var storage = window.localStorage;
+        storage.setItem('Runways', strFlip);
+        //localStorage.Runways=strFlip;
+        //fnReset();
+        //document.getElementById('divUpdate').style.visibility = 'visible'; //make Update Div visible
+        document.getElementById("divUpdate").style.display= "block";
+        //alert("Update!")
+    }
+
+    $("#flpRun").on("change", function () {
+        //alert("Change!");
+        fnSave();
+    });
+
+  });//End Page Create
