@@ -8,9 +8,11 @@
     <!-- <engine name="ios" spec="~4.3.1" /> -->
 
     <platform name="ios">
-      <icon src="icon.png" />
-      <splash src="splash/ios/Default-Portrait-736h@3x.png" width="1242" height="2208"/>
-      <splash src="splash/ios/Default-Landscape-736h@3x.png" width="2208" height="1242"/>
+      <icon src="/icon.png" />
+      <splash src="/splash/ios/Default-Portrait-736h@3x.png" width="1242" height="2208"/>
+      <splash src="/splash/ios/Default-Landscape-736h@3x.png" width="2208" height="1242"/>
+      <splash src="/splash/ios/Default-Portrait-2436h@3x.png" width="1125" height="2436"/>
+      <splash src="/splash/ios/Default-Landscape-2436h@3x.png" width="2436" height="1125"/>
 
     </platform>
 
