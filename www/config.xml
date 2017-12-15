@@ -13,9 +13,11 @@
       <splash src="splash/ios/Default-Landscape-736h@3x.png" width="2208" height="1242"/>
       <splash src="splash/ios/Default-Portrait-2436h@3x.png" width="1125" height="2436"/>
       <splash src="splash/ios/Default-Landscape-2436h@3x.png" width="2436" height="1125"/>
-
     </platform>
 
     <!-- <preference name="StatusBarOverlaysWebView" value="false" /> -->
+
+    <preference name='phonegap-version' value='cli-6.5.0' />
+    <preference name='pgb-builder-version' value='2' />
 
 </widget>
